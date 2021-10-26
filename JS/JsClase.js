@@ -23,7 +23,6 @@ let Productos = [IPA,SCOTISH,STOUT,GOLDEN]    //Array de productos
 let Usuarios = []                             //Array de Usuarios, unicamente lo utilice para poder usar un push
 
                 //Variables
-let descuento = 0;                            
 let precio = 0;
 let sinIva = 0;
 
@@ -66,7 +65,6 @@ let opcion = parseInt(prompt(               //Solicitud de producto
 // me fijo cual eligio la persona 
 
 let litros = prompt("cuantos litros desea?") //Solicitud de litros
-
 
 
 
@@ -208,12 +206,23 @@ fconsole("Precio con descuento aplicado $" + fporcentaje(precio, descuento));
 
 let consumidorFinal = prompt("Consumidor final?").toUpperCase();  //Consulta si es consumidor final o no para descriminar I.V.A.
 
+let li = document.createElement("li");
+
 if(consumidorFinal == "NO"){
+
   fiva(precioDescuento)
   fconsole("Precio final sin I.V.A. $" + sinIva);
 
+  function confirmar(){
+
+  let lista = document.getElementById("lista");
+
+
   li.innerHTML = "Precio final $" + sinIva ;
 
+  lista.appendChild(li);
+
+  }
 
   }
   else if(consumidorFinal == "SI"){
@@ -225,7 +234,7 @@ if(consumidorFinal == "NO"){
 
   let lista = document.getElementById("lista");
 
-  let li = document.createElement("li");
+
   li.innerHTML = "Precio final $" + precioDescuento;
 
   lista.appendChild(li);
