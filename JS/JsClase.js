@@ -1,35 +1,23 @@
 
-
-
-
-
-class Producto {            //Creador de objetos productos
-  // clases van con mayuscula
-  constructor(estilo, precioestilo) {
-    this.estilo = estilo;
-    this.precioestilo = precioestilo;
-    this.estiloElegido = function(){ fconsole("Usted selecciono "+ this.estilo)}
-
-  }
-}
-
-
-const IPA = new Producto("IPA", 300);
-const SCOTISH = new Producto("SCOTISH", 250);
-const STOUT = new Producto("STOUT", 280);
-const GOLDEN = new Producto("GOLDEN", 200);
-
-let Productos = [IPA,SCOTISH,STOUT,GOLDEN]    //Array de productos
-let Usuarios = []                             //Array de Usuarios, unicamente lo utilice para poder usar un push
-
-                //Variables
-let precio = 0;
-let sinIva = 0;
+let carrito = [];
+let usuarios = [];
 
                            // Funciones
 function AgregarUsuario(usuario){
-  Usuarios.push(usuario);
+  usuarios.push(usuario);
 }
+
+
+let usuario = prompt("Ingrese su nombre")   //Solicitud Nombre de Usuario
+
+
+AgregarUsuario(usuario) 
+
+
+localStorage.setItem("Nombre de Usuario", usuario )
+
+console.log(usuario)
+
 
 function fconsole(mensaje) {
   console.log(mensaje);
@@ -51,196 +39,82 @@ function fiva(numero) {
 }
 
 
+function fdescuento(litro){
+  if (litro < 10) {                            //Calculos de descuentos en base a litros      
+  } else if (litro > 9 && litro < 30) {
+    descuento = 10;
+  } else if (litro > 29 && litro < 50) {
+    descuento = 20;
+  } else if (litro > 49) {
+    descuento = 30;
+  }
+  return descuento;
+}
+
+let bCompra = document.querySelectorAll(".bCompra")
+console.log( bCompra);
+
+for(let boton of bCompra ){
+
+  boton.addEventListener("click", fCarrito)
+
+  console.log(boton)
+}
 
 
+function fCarrito(e){
 
-let usuario = prompt("Ingrese su nombre")   //Solicitud Nombre de Usuario
-AgregarUsuario(usuario)
+  let hijo = e.target;
+  let padre = hijo.parentNode.parentNode;
 
-
-let opcion = parseInt(prompt(               //Solicitud de producto
- 
-  "¿Que cerveza vas a llevar? \n\n 1- IPA \n\n 2- Scotish \n\n 3- Stout \n\n 4- Golden?"));
+  let nombreProducto = padre.querySelector("h3").textContent;
+  let img = padre.querySelector("img").src;
+  let precio = padre.querySelector("p").textContent;
   
-// me fijo cual eligio la persona 
-
-let litros = prompt("cuantos litros desea?") //Solicitud de litros
 
 
+  const producto = {
 
-switch (opcion) {                       //Segun el producto corresponde el case, para aplicar las funciones correspondientes
-
-  case 1: 
-
+      nombre: nombreProducto,
+      img: img,
+      precio: precio,
   
-  IPA.estiloElegido()
 
-  fconsole("El precio por litro es $ " + Productos[0].precioestilo);
-
+  }
 
 
-fmultiplicacion(Productos[0].precioestilo, litros);
-
-fconsole("Precio " + precio);
-
-function confirmar(){
-
-
-  let lista = document.getElementById("lista");
-
-  let li = document.createElement("li");
-  li.innerHTML = "Usted eligio " + Productos[0].estilo + " valor por listro $" + Productos[0].precioestilo;
-
-  lista.appendChild(li);
-
+  carrito.push(producto);
+  mostrarCarrito( producto);
 
 }
 
 
 
 
-  break;
+function mostrarCarrito( producto){
 
-  case 2: 
+  let fila = document.createElement("tr"); 
 
-  SCOTISH.estiloElegido()
+  fila.innerHTML = `<td><img src="${producto.img} "></td>
+                    <td>${producto.nombre}</td>
+                    <td>${producto.precio}</td>
+                  `
 
-  console.log("El precio por litro es $" + Productos[1].precioestilo);
+  let tbody = document.getElementById("tbody");
 
-  fmultiplicacion(Productos[1].precioestilo, litros);
-  
-  fconsole("Precio " + precio);
-
-  function confirmar(){
-
-
-    let lista = document.getElementById("lista");
-  
-    let li = document.createElement("li");
-    li.innerHTML = "Usted eligio " + Productos[1].estilo  + " valor por listro $" + Productos[1].precioestilo;
-  
-    lista.appendChild(li);
-  
-  
-  }
-  
-  
-
-
-     break;
-
-  case 3: 
-
-  function confirmar(){
-
-
-    let lista = document.getElementById("lista");
-  
-    let li = document.createElement("li");
-    li.innerHTML = "Usted eligio " + Productos[2].estilo + " valor por listro $" + Productos[2].precioestilo;
-  
-    lista.appendChild(li);
-  
-  
-  }
-
-  STOUT.estiloElegido()
-
-  fconsole("El precio por litro es $" + Productos[2].precioestilo);
-
-  fmultiplicacion(Productos[2].precioestilo, litros);
-
-  fconsole("Precio " + precio);
-
-
-
-     break;
-
-  case 4: 
+  tbody.appendChild( fila );
 
   
-  function confirmar(){
-
-
-  let lista = document.getElementById("lista");
-
-  let li = document.createElement("li");
-  li.innerHTML = "Usted eligio " + Productos[3].estilo + " valor por listro $" + Productos[3].precioestilo;
-
-  lista.appendChild(li);
-
-
-  }
-
-  GOLDEN.estiloElegido()
-
-  fconsole("El precio por litro es $" + Productos[3].precioestilo);
-
-  fmultiplicacion(Productos[3].precioestilo, litros);
-
-fconsole("Precio " + precio);
-
-
-    break;
-    
-    default:
-      alert("Caracter no valido")
-    break;
-}
- 
-
-
-if (litros < 10) {                            //Calculos de descuentos en base a litros      
-} else if (litros > 9 && litros < 30) {
-  descuento = 10;
-} else if (litros > 29 && litros < 50) {
-  descuento = 20;
-} else if (litros > 49) {
-  descuento = 30;
-}
-
-fconsole("El decuento es " + descuento + "%");
-
-//uso lo que retorna la function fporcentaje(precio, descuento) no la variable
-fconsole("Precio con descuento aplicado $" + fporcentaje(precio, descuento));
-
-let consumidorFinal = prompt("Consumidor final?").toUpperCase();  //Consulta si es consumidor final o no para descriminar I.V.A.
-
-let li = document.createElement("li");
-
-if(consumidorFinal == "NO"){
-
-  fiva(precioDescuento)
-  fconsole("Precio final sin I.V.A. $" + sinIva);
-
-  function confirmar(){
-
-  let lista = document.getElementById("lista");
-
-
-  li.innerHTML = "Precio final $" + sinIva ;
-
-  lista.appendChild(li);
-
-  }
-
-  }
-  else if(consumidorFinal == "SI"){
-  fconsole("Precio final $" + precioDescuento)
-
+  let carritoJSON = JSON.stringify (carrito)
   
-  function confirmar(){
+  localStorage.setItem("Carrito", carritoJSON )
 
-
-  let lista = document.getElementById("lista");
-
-
-  li.innerHTML = "Precio final $" + precioDescuento;
-
-  lista.appendChild(li);
 
 
 }
-  }   
+
+console.log(carrito);
+
+
 
 

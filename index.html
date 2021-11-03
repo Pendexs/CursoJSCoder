@@ -10,7 +10,6 @@
             Deleita a tus amigos con tu MancoBeer, segui nuestros tips">
 
     <title>Compras</title>
-    <script src="JS/JsClase.js"></script>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
@@ -50,41 +49,77 @@
 
 
 
-        <div >
-            <ul id="lista">
-    
-            </ul>
-            <button onclick="confirmar()">Confirmar</button>
-
-        </div>
-
-
-
-
-
-
 
         <main>
 
             <h2>Cervezas por litro</h2>
-                <ul>
-                    <li>IPA     $300 L</li>
-                    <li>Golden  $200 L</li>
-                    <li>Stout   $280 L</li>
-                    <li>Scotish $250 L</li>
-                </ul>
 
-            <h2>Descuentos</h2>
-                <ul>
-                    <li>10 Litros 10%</li>
-                    <li>30 litros 20%</li>
-                    <li>50 litros 30%</li>
-                </ul>
+
+            <div class="productos">
+
+
+            <article class="card transparante" style="width: 20%;">
+                <div class="card-body">
+                <h3>IPA</h3>
+                 <img class = "trein" src="https://http2.mlstatic.com/D_NQ_NP_887577-MLA46153218707_052021-O.webp"  alt="">
+                <p class="card-text">$300</p>
+                <a href="#" class="bCompra">Comprar</a>
+                </div>
+            </article>
+
+
+            <article class="card transparante" style="width: 20%;">
+                <div class="card-body">
+                <h3>GOLDEN</h3>
+                    <img class = "trein" src="https://http2.mlstatic.com/D_NQ_NP_911022-MLA43547531810_092020-O.webp"  alt="">
+                <p class="card-text">$200</p>
+                <a href="#" class="bCompra">Comprar</a>
+                </div>
+            </article>
+
+            <article class="card transparante" style="width: 20%;">
+                <div class="card-body">
+                <h3>STOUT</h3>
+                <img class = "trein" src="https://http2.mlstatic.com/D_NQ_NP_815342-MLA43743826926_102020-O.webp"  alt="">
+                <p class="card-text">$280</p>
+                <a href="#" class="bCompra">Comprar</a>
+                </div>
+            </article>
+
+            <article class="card transparante" style="width: 20%;">
+                <div class="card-body">
+                <h3>SCOTISH</h3>
+                <img class = "trein" src="https://http2.mlstatic.com/D_NQ_NP_975140-MLA43744247052_102020-O.webp"  alt="">
+                <p class="card-text">$250</p>
+                <a href="#" class="carrito bCompra">Comprar</a>
+                </div>
+            </article>
+        </div>
+
+            
+
                 
 
-            <ul class="lista">
+            </div>
+            <div class="container" id="carrito">
+              <h2>Carrito</h2>
+              <table class="table table-dark">
+                <thead>
+                  <tr>             
+                    <td>Producto</td>
+                    <td>Nombre</td>
+                    <td>Precio</td>
+                    <td></td>
+                  </tr>
+                </thead>
+                <tbody id="tbody">
+                 
+                </tbody>
+              </table>
+      
+            </div>
 
-            </ul>
+
 
 
         </main>
@@ -99,6 +134,9 @@
                 </div>
             </footer>
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+ <script src="JS/JsClase.js"></script>
+ <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
 
 </body>
 
