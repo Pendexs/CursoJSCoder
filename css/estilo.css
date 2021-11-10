@@ -64,7 +64,10 @@
                  }
                 }
 
-
+        .productos {
+                display: flex;
+                flex-direction: row;
+        }
 
 
              

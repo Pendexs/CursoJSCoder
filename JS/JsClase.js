@@ -1,3 +1,31 @@
+$(document).ready( function(){
+
+
+
+  
+$("#verCarrito").click(function(e){
+  $("#carrito").toggle() ;
+
+
+  if( e.target.innerHTML != "Ocultar carrito"){
+
+    e.target.innerHTML = "Ocultar carrito";
+
+}
+else{
+    e.target.innerHTML = "Ver carrito";
+
+
+}
+
+
+
+});
+
+})
+
+
+
 
 let carrito = [];
 let usuarios = [];
@@ -91,18 +119,13 @@ function fCarrito(e){
 
 
 
+
 function mostrarCarrito( producto){
 
-  let fila = document.createElement("tr"); 
-
-  fila.innerHTML = `<td><img src="${producto.img} "></td>
+  $("tbody").append(`<tr><td><img src="${producto.img} "></td>
                     <td>${producto.nombre}</td>
-                    <td>${producto.precio}</td>
-                  `
-
-  let tbody = document.getElementById("tbody");
-
-  tbody.appendChild( fila );
+                    <td>${producto.precio}</td></tr>
+                    `)
 
   
   let carritoJSON = JSON.stringify (carrito)
