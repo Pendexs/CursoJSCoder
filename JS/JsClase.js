@@ -16,6 +16,8 @@ else{
     e.target.innerHTML = "Ver carrito";
 
 
+
+
 }
 
 
@@ -51,33 +53,8 @@ function fconsole(mensaje) {
   console.log(mensaje);
 }
 
-function fmultiplicacion(numeroA, numeroB) {
-  precio = numeroA * numeroB; 
-  return precio;
-}
-
-function fporcentaje(numero, porcentaje) {
-  precioDescuento = numero - (numero * porcentaje) / 100; // FALTABA RETURN
-  return precioDescuento;
-}
-
-function fiva(numero) {
-  sinIva = numero / 1.21;
-  return sinIva;
-}
 
 
-function fdescuento(litro){
-  if (litro < 10) {                            //Calculos de descuentos en base a litros      
-  } else if (litro > 9 && litro < 30) {
-    descuento = 10;
-  } else if (litro > 29 && litro < 50) {
-    descuento = 20;
-  } else if (litro > 49) {
-    descuento = 30;
-  }
-  return descuento;
-}
 
 let bCompra = document.querySelectorAll(".bCompra")
 console.log( bCompra);
@@ -140,4 +117,45 @@ console.log(carrito);
 
 
 
+let geoLoc = navigator.geolocation.getCurrentPosition( mostrarGeo);
 
+function mostrarGeo( position ){
+
+    $.ajax({
+
+
+      url:'http://api.openweathermap.org/data/2.5/weather',
+      type:"GET",
+      data:{
+          lat: position.coords.latitude,
+          lon: position.coords.longitude,
+          appid: 'bbf8893c6e8030e157bb633d11a66e17',
+          dataType:"jsonp",
+          units: 'metric'
+      },
+      success:function(data){
+  
+          console.log( data);
+          let icono = data.weather[0].icon;
+          let iconoURL = "http://openweathermap.org/img/w/" + icono + ".png";
+          $("#icono").attr("src" , iconoURL);
+
+
+    
+
+          let contenido = `<div>
+                              <p>${data.name}</p>                            
+                              <p>${data.weather[0].main}</p>
+                              <p>TEMP: ${data.main.temp}</p>
+  
+                          </div>`;
+  
+  
+          $("#cajaClima").append(contenido);
+      } 
+  })
+}
+
+$("#botonClima").click(function(){
+
+  $("#cajaClima").toggle(1000)})
