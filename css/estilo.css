@@ -64,7 +64,10 @@
                  }
                 }
 
-
+        .productos {
+                display: flex;
+                flex-direction: row;
+        }
 
 
              
@@ -686,10 +689,13 @@
 
         
 
-
+     .wid70{
+             width: 70px;
+     }
                 
 /* IMAGENES*/
 
+<<<<<<< HEAD
 
 /*CARRITO*/
 
@@ -701,6 +707,8 @@
      
     
 
+=======
+>>>>>>> 3c54774238b86264cf3958ceb6461c744d5a5ff2
 
        
         
