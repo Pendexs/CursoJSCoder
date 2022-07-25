@@ -1,246 +1,90 @@
+let nombreUsuario = prompt("Ingresar nombre de usuario");
+let producto = prompt("Indique el producto que desea: diablo - verde- dorado - negro").toUpperCase()
+let cantidad = prompt("Cuantos desea?")
+let consumidorFinal = prompt("Consumidor final?").toUpperCase();
 
 
-
-
-
-class Producto {            //Creador de objetos productos
-  // clases van con mayuscula
-  constructor(estilo, precioestilo) {
-    this.estilo = estilo;
-    this.precioestilo = precioestilo;
-    this.estiloElegido = function(){ fconsole("Usted selecciono "+ this.estilo)}
-
-  }
-}
-
-
-const IPA = new Producto("IPA", 300);
-const SCOTISH = new Producto("SCOTISH", 250);
-const STOUT = new Producto("STOUT", 280);
-const GOLDEN = new Producto("GOLDEN", 200);
-
-let Productos = [IPA,SCOTISH,STOUT,GOLDEN]    //Array de productos
-let Usuarios = []                             //Array de Usuarios, unicamente lo utilice para poder usar un push
-
-                //Variables
-let precio = 0;
-let sinIva = 0;
-
-                           // Funciones
-function AgregarUsuario(usuario){
-  Usuarios.push(usuario);
-}
-
-function fconsole(mensaje) {
-  console.log(mensaje);
-}
-
-function fmultiplicacion(numeroA, numeroB) {
-  precio = numeroA * numeroB; 
-  return precio;
-}
-
-function fporcentaje(numero, porcentaje) {
-  precioDescuento = numero - (numero * porcentaje) / 100; // FALTABA RETURN
-  return precioDescuento;
-}
-
-function fiva(numero) {
-  sinIva = numero / 1.21;
-  return sinIva;
-}
-
-
-
-
-
-let usuario = prompt("Ingrese su nombre")   //Solicitud Nombre de Usuario
-AgregarUsuario(usuario)
-
-
-let opcion = parseInt(prompt(               //Solicitud de producto
- 
-  "¿Que cerveza vas a llevar? \n\n 1- IPA \n\n 2- Scotish \n\n 3- Stout \n\n 4- Golden?"));
-  
-// me fijo cual eligio la persona 
-
-let litros = prompt("cuantos litros desea?") //Solicitud de litros
-
-
-
-switch (opcion) {                       //Segun el producto corresponde el case, para aplicar las funciones correspondientes
-
-  case 1: 
-
-  
-  IPA.estiloElegido()
-
-  fconsole("El precio por litro es $ " + Productos[0].precioestilo);
-
-
-
-fmultiplicacion(Productos[0].precioestilo, litros);
-
-fconsole("Precio " + precio);
-
-function confirmar(){
-
-
-  let lista = document.getElementById("lista");
-
-  let li = document.createElement("li");
-  li.innerHTML = "Usted eligio " + Productos[0].estilo + " valor por listro $" + Productos[0].precioestilo;
-
-  lista.appendChild(li);
-
-
-}
-
-
-
-
-  break;
-
-  case 2: 
-
-  SCOTISH.estiloElegido()
-
-  console.log("El precio por litro es $" + Productos[1].precioestilo);
-
-  fmultiplicacion(Productos[1].precioestilo, litros);
-  
-  fconsole("Precio " + precio);
-
-  function confirmar(){
-
-
-    let lista = document.getElementById("lista");
-  
-    let li = document.createElement("li");
-    li.innerHTML = "Usted eligio " + Productos[1].estilo  + " valor por listro $" + Productos[1].precioestilo;
-  
-    lista.appendChild(li);
-  
-  
-  }
-  
-  
-
-
-     break;
-
-  case 3: 
-
-  function confirmar(){
-
-
-    let lista = document.getElementById("lista");
-  
-    let li = document.createElement("li");
-    li.innerHTML = "Usted eligio " + Productos[2].estilo + " valor por listro $" + Productos[2].precioestilo;
-  
-    lista.appendChild(li);
-  
-  
-  }
-
-  STOUT.estiloElegido()
-
-  fconsole("El precio por litro es $" + Productos[2].precioestilo);
-
-  fmultiplicacion(Productos[2].precioestilo, litros);
-
-  fconsole("Precio " + precio);
-
-
-
-     break;
-
-  case 4: 
-
-  
-  function confirmar(){
-
-
-  let lista = document.getElementById("lista");
-
-  let li = document.createElement("li");
-  li.innerHTML = "Usted eligio " + Productos[3].estilo + " valor por listro $" + Productos[3].precioestilo;
-
-  lista.appendChild(li);
-
-
-  }
-
-  GOLDEN.estiloElegido()
-
-  fconsole("El precio por litro es $" + Productos[3].precioestilo);
-
-  fmultiplicacion(Productos[3].precioestilo, litros);
-
-fconsole("Precio " + precio);
-
-
-    break;
+class Producto {
     
-    default:
-      alert("Caracter no valido")
-    break;
+    constructor( nombre, precio) {
+      this.nombre = nombre;
+      this.precio = precio;
+    }
+ }
+  
+  const DIABLO = new Producto("diablo", 800);
+  const VERDE = new Producto("verde", 400);
+  const DORADO = new Producto("dorado", 300);
+  const NEGRO = new Producto("negro", 600);
+
+
+//FUNCIONES
+const fmultiplicacion = (numeroA, numeroB) => precio = numeroA * numeroB;
+
+const fiva = (numero) => sinIva = numero / 1.21;
+
+
+// LOGIN
+
+if (nombreUsuario == "ivan") {
+    alert("Hola Admin");
 }
- 
-
-
-if (litros < 10) {                            //Calculos de descuentos en base a litros      
-} else if (litros > 9 && litros < 30) {
-  descuento = 10;
-} else if (litros > 29 && litros < 50) {
-  descuento = 20;
-} else if (litros > 49) {
-  descuento = 30;
+else {
+    console.log ("Hola " + nombreUsuario + " bienvenido/a");
 }
 
-fconsole("El decuento es " + descuento + "%");
-
-//uso lo que retorna la function fporcentaje(precio, descuento) no la variable
-fconsole("Precio con descuento aplicado $" + fporcentaje(precio, descuento));
-
-let consumidorFinal = prompt("Consumidor final?").toUpperCase();  //Consulta si es consumidor final o no para descriminar I.V.A.
-
-let li = document.createElement("li");
-
-if(consumidorFinal == "NO"){
-
-  fiva(precioDescuento)
-  fconsole("Precio final sin I.V.A. $" + sinIva);
-
-  function confirmar(){
-
-  let lista = document.getElementById("lista");
+// COMPRA
 
 
-  li.innerHTML = "Precio final $" + sinIva ;
+ switch (producto) { 
 
-  lista.appendChild(li);
-
-  }
-
-  }
-  else if(consumidorFinal == "SI"){
-  fconsole("Precio final $" + precioDescuento)
+    case "DIABLO": 
+    console.log("El precio por unidad $" + DIABLO.precio);
+  
+    fmultiplicacion(DIABLO.precio, cantidad);
+    
+    console.log ("Total " + precio);
 
   
-  function confirmar(){
+        break;
+  
+    case "VERDE": 
+    console.log("El precio por unidad es $" + VERDE.precio);
+  
+    fmultiplicacion(VERDE.precio, cantidad);
+    
+    console.log ("Total " + precio);
+    
+        break;
+  
+    case "DORADO": 
+    console.log("El precio por unidad es $" + DORADO.precio);
+  
+    fmultiplicacion(DORADO.precio, cantidad);
+    
+    console.log ("Total " + precio);
+       break;
+  
+    case "NEGRO": 
+    console.log("El precio por unidad es $" + NEGRO.precio);
+  
+    fmultiplicacion(NEGRO.precio, cantidad);
+    
+    console.log ("Total " + precio);
+      break;
+
+      default:
+            console.log("Producto no valido")
+  }
 
 
-  let lista = document.getElementById("lista");
-
-
-  li.innerHTML = "Precio final $" + precioDescuento;
-
-  lista.appendChild(li);
-
-
-}
-  }   
-
-
+  if(consumidorFinal == "NO"){
+    fiva(precio)
+    console.log ("Precio final sin I.V.A. $" + sinIva + " muchas gracias por su compra");
+  
+    }
+    else if(precio == "SI"){
+    console.log ("Muchas gracias por su compra")
+    }   
+  
+  

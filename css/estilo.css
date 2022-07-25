@@ -201,6 +201,14 @@
                                 padding-top: 40px;
                         }
 
+
+                        .producto{
+                                width: 20%;
+                                margin: 40px;
+                                padding-top: 40px;
+                        }
+
+
         
                         .imgHome{
                                 width: 100%;
@@ -682,6 +690,14 @@
                 
 /* IMAGENES*/
 
+
+/*CARRITO*/
+
+        .productos {
+
+                display: flex;
+                flex-direction: row;
+        }
      
     
 
